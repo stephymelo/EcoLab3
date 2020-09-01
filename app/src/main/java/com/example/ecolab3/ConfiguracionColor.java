@@ -2,7 +2,6 @@ package com.example.ecolab3;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,9 +12,9 @@ import android.widget.Button;
 public class ConfiguracionColor extends AppCompatActivity implements View.OnClickListener {
 
     private ConstraintLayout mConstraintLayout;
-    private Button AzulBoton;
-    private Button BlancoBoton;
-    private Button NegroBoton;
+    private Button azulBoton;
+    private Button blancoBoton;
+    private Button negroBoton;
     private String color="white";
 
 
@@ -27,14 +26,14 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
 
 
         mConstraintLayout = (ConstraintLayout)findViewById(R.id.constraintLayout);
-        AzulBoton = findViewById(R.id.AzulBoton);
-        BlancoBoton = findViewById(R.id.BlancoBoton);
-        NegroBoton = findViewById(R.id.NegroBoton);
+        azulBoton = findViewById(R.id.azulBoton);
+        blancoBoton = findViewById(R.id.blancoBoton);
+        negroBoton = findViewById(R.id.negroBoton);
 
 
-        AzulBoton.setOnClickListener(this);
-        BlancoBoton.setOnClickListener(this);
-        NegroBoton.setOnClickListener(this);
+        azulBoton.setOnClickListener(this);
+        blancoBoton.setOnClickListener(this);
+        negroBoton.setOnClickListener(this);
 
         if(color.equals("blanco")){
             mConstraintLayout.setBackgroundColor(Color.WHITE);
@@ -56,20 +55,20 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
 
         switch (v.getId()) {
 
-            case R.id.AzulBoton:
+            case R.id.azulBoton:
                 Intent data = new Intent();
                 data.putExtra("color","azul");
                 setResult(RESULT_OK,data);
                 finish();
                 break;
-            case R.id.BlancoBoton:
+            case R.id.blancoBoton:
                 Intent data2 = new Intent();
                 data2.putExtra("color","blanco");
                 setResult(RESULT_OK,data2);
                 finish();
 
                 break;
-            case R.id.NegroBoton:
+            case R.id.negroBoton:
                 Intent data3 = new Intent();
                 data3.putExtra("color","negro");
                 setResult(RESULT_OK,data3);

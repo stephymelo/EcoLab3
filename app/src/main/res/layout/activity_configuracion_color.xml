@@ -8,7 +8,7 @@
     tools:context=".ConfiguracionColor">
 
     <Button
-        android:id="@+id/AzulBoton"
+        android:id="@+id/azulBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/BlancoBoton"
+        android:id="@+id/blancoBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
@@ -28,10 +28,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AzulBoton" />
+        app:layout_constraintTop_toBottomOf="@+id/azulBoton" />
 
     <Button
-        android:id="@+id/NegroBoton"
+        android:id="@+id/negroBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BlancoBoton" />
+        app:layout_constraintTop_toBottomOf="@+id/blancoBoton" />
 
     <TextView
         android:id="@+id/textView2"
