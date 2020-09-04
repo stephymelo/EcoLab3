@@ -23,9 +23,12 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_configuracion_color);
 
 
-        mConstraintLayout = (ConstraintLayout)findViewById(R.id.constraintLayout);
+        color=getIntent().getExtras().getString("color");
+
+        mConstraintLayout = (ConstraintLayout)findViewById(R.id.colorConstraint);
         azulBoton = findViewById(R.id.azulBoton);
         blancoBoton = findViewById(R.id.blancoBoton);
         negroBoton = findViewById(R.id.negroBoton);
@@ -34,19 +37,8 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
         azulBoton.setOnClickListener(this);
         blancoBoton.setOnClickListener(this);
         negroBoton.setOnClickListener(this);
+      changeColor();
 
-        if(color.equals("blanco")){
-            mConstraintLayout.setBackgroundColor(Color.WHITE);
-
-        }
-        if(color.equals("azul")){
-            mConstraintLayout.setBackgroundColor(Color.BLUE);
-
-        }
-        if(color.equals("negro")){
-            mConstraintLayout.setBackgroundColor(Color.BLACK);
-
-        }
     }
 
 
@@ -59,12 +51,14 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
                 Intent data = new Intent();
                 data.putExtra("color","azul");
                 setResult(RESULT_OK,data);
+                color="azul";
                 finish();
                 break;
             case R.id.blancoBoton:
                 Intent data2 = new Intent();
                 data2.putExtra("color","blanco");
                 setResult(RESULT_OK,data2);
+                color="blanco";
                 finish();
 
                 break;
@@ -72,15 +66,33 @@ public class ConfiguracionColor extends AppCompatActivity implements View.OnClic
                 Intent data3 = new Intent();
                 data3.putExtra("color","negro");
                 setResult(RESULT_OK,data3);
+                color="negro";
                 finish();
 
                 break;
+
         }
 
 
 
 
 
+    }
+
+
+    public void changeColor(){
+        if(color.equals("blanco")){
+            mConstraintLayout.setBackgroundColor(Color.WHITE);
+
+        }
+        if(color.equals("azul")){
+            mConstraintLayout.setBackgroundColor(Color.BLUE);
+
+        }
+        if(color.equals("negro")){
+            mConstraintLayout.setBackgroundColor(Color.BLACK);
+
+        }
     }
 
 

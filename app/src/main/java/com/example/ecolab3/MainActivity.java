@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         continuarBoton.setOnClickListener(this);
         configBoton.setOnClickListener(this);
 
+
     }
 
     @Override
@@ -66,10 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.continuarBoton:
                 String nombreIn=nombreInput.getText().toString();
-
                 Intent i=new Intent(this,CalcularNotas.class);
                 i.putExtra("nombre",nombreIn);
                 startActivity(i);
+                Intent c=new Intent(this,CalcularNotas.class);
+                c.putExtra("color",color);
+                startActivityForResult(c,CODE);
                 break;
             case R.id.configBoton:
                 Intent b=new Intent(this,ConfiguracionColor.class);

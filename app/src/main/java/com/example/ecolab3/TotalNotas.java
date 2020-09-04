@@ -1,8 +1,10 @@
 package com.example.ecolab3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +19,8 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
     private Button calcularAgain;
     private OperationsNote resultado;
     private String result;
-
+    private ConstraintLayout mConstraintLayout;
+    private String color="white";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
         String nombreIn = getIntent().getExtras().getString("nombre");
         resultado=new OperationsNote(par1,par2,quiz,parcial10,parcial20,exercise);
         resultado.calcularNotaFinal();
+        mConstraintLayout=findViewById(R.id.constraint);
         nombre = findViewById(R.id.nombre);
         resultadoText = findViewById(R.id.resultadoText);
         nota = findViewById(R.id.nota);
@@ -43,8 +47,9 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
         result=String.valueOf(resultado.getResultado());
         nota.setText(result);
         calcularAgain.setOnClickListener(this);
+        changeColor();
 
-
+        color=getIntent().getExtras().getString("color");
     }
 
 
@@ -60,5 +65,19 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    public void changeColor(){
+        if(color.equals("blanco")){
+            mConstraintLayout.setBackgroundColor(Color.WHITE);
+
+        }
+        if(color.equals("azul")){
+            mConstraintLayout.setBackgroundColor(Color.BLUE);
+
+        }
+        if(color.equals("negro")){
+            mConstraintLayout.setBackgroundColor(Color.BLACK);
+
+        }
+    }
 
 }

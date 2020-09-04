@@ -1,8 +1,10 @@
 package com.example.ecolab3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,8 @@ public class CalcularNotas extends AppCompatActivity implements View.OnClickList
     private EditText proyecto1;
     private EditText ejercicios;
     private EditText quices;
+    private String color="white";
+    private ConstraintLayout mConstraintLayout;
 
 
     private OperationsNote notas;
@@ -25,7 +29,7 @@ public class CalcularNotas extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_notas);
-
+        mConstraintLayout=findViewById(R.id.constraint);
         calcularBoton = findViewById(R.id.calcularBoton);
         ejercicios = findViewById(R.id.ejercicios);
         proyecto1 = findViewById(R.id.proyecto1);
@@ -40,15 +44,13 @@ public class CalcularNotas extends AppCompatActivity implements View.OnClickList
         calcularBoton.setOnClickListener(this);
 
         nombreIn = getIntent().getExtras().getString("nombre");
-        rellenarNotas();
+
+
+        color=getIntent().getExtras().getString("color");
+        changeColor();
 
     }
 
-    public void rellenarNotas(){
-
-
-
-    }
 
 
     public void onClick(View v) {
@@ -68,6 +70,21 @@ public class CalcularNotas extends AppCompatActivity implements View.OnClickList
                 startActivity(i);
 
                 break;
+        }
+    }
+
+    public void changeColor(){
+        if(color.equals("blanco")){
+            mConstraintLayout.setBackgroundColor(Color.WHITE);
+
+        }
+        if(color.equals("azul")){
+            mConstraintLayout.setBackgroundColor(Color.BLUE);
+
+        }
+        if(color.equals("negro")){
+            mConstraintLayout.setBackgroundColor(Color.BLACK);
+
         }
     }
 
