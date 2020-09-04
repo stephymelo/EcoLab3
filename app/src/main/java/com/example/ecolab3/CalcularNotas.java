@@ -29,7 +29,7 @@ public class CalcularNotas extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_notas);
-        mConstraintLayout=findViewById(R.id.constraint);
+        mConstraintLayout=findViewById(R.id.constraintS);
         calcularBoton = findViewById(R.id.calcularBoton);
         ejercicios = findViewById(R.id.ejercicios);
         proyecto1 = findViewById(R.id.proyecto1);

@@ -6,9 +6,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class TotalNotas extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +20,7 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
     private OperationsNote resultado;
     private String result;
     private ConstraintLayout mConstraintLayout;
-    private String color="white";
+    private String sharedColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +34,12 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
         int quiz= Integer.parseInt(getIntent().getExtras().getString("quiz"));
         int exercise= Integer.parseInt(getIntent().getExtras().getString("exercise"));
 
+        sharedColor=getSharedPreferences("pref",MODE_PRIVATE).getString("colorsito","f");
 
         String nombreIn = getIntent().getExtras().getString("nombre");
         resultado=new OperationsNote(par1,par2,quiz,parcial10,parcial20,exercise);
         resultado.calcularNotaFinal();
-        mConstraintLayout=findViewById(R.id.constraint);
+        mConstraintLayout=findViewById(R.id.constraintS);
         nombre = findViewById(R.id.nombre);
         resultadoText = findViewById(R.id.resultadoText);
         nota = findViewById(R.id.nota);
@@ -49,7 +50,6 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
         calcularAgain.setOnClickListener(this);
         changeColor();
 
-        color=getIntent().getExtras().getString("color");
     }
 
 
@@ -59,6 +59,7 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
             case R.id.calcularAgain:
                 Intent i=new Intent(this,MainActivity.class);
                 startActivity(i);
+
                 break;
         }
 
@@ -66,15 +67,17 @@ public class TotalNotas extends AppCompatActivity implements View.OnClickListene
     }
 
     public void changeColor(){
-        if(color.equals("blanco")){
+        Log.e(sharedColor,"colorsito");
+
+        if(sharedColor.equals("blanco")){
             mConstraintLayout.setBackgroundColor(Color.WHITE);
 
         }
-        if(color.equals("azul")){
+        if(sharedColor.equals("azul")){
             mConstraintLayout.setBackgroundColor(Color.BLUE);
 
         }
-        if(color.equals("negro")){
+        if(sharedColor.equals("negro")){
             mConstraintLayout.setBackgroundColor(Color.BLACK);
 
         }

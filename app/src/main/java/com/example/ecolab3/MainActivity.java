@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ConstraintLayout constraint;
     private Button configBoton;
     private String color;
+    private SharedPreferences preferences;
 
 
     @Override
@@ -29,16 +31,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
+
         nombreInput = findViewById(R.id.nombreInput);
         promptText = findViewById(R.id.promptText);
         continuarBoton = findViewById(R.id.continuarBoton);
         configBoton = findViewById(R.id.configBoton);
 
-        constraint = findViewById(R.id.constraint);
-        color="white";
+        constraint = findViewById(R.id.constraintS);
+       color="white";
+
 
         continuarBoton.setOnClickListener(this);
         configBoton.setOnClickListener(this);
+
 
 
     }
@@ -70,15 +75,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent i=new Intent(this,CalcularNotas.class);
                 i.putExtra("nombre",nombreIn);
                 startActivity(i);
+
                 Intent c=new Intent(this,CalcularNotas.class);
                 c.putExtra("color",color);
                 startActivityForResult(c,CODE);
+
+
                 break;
             case R.id.configBoton:
                 Intent b=new Intent(this,ConfiguracionColor.class);
                 b.putExtra("color",color);
                 startActivityForResult(b,CODE);
-
+                preferences=getSharedPreferences("pref",MODE_PRIVATE);
+                preferences.edit().putString("colorsito",color).apply();
 
                 break;
         }
